@@ -1,0 +1,65 @@
+name: 💡 新规则建议 / Rule Proposal
+description: 建议一条新的 Parquet 体检规则
+title: "feat(rule): "
+labels: ["enhancement", "rule"]
+body:
+  - type: markdown
+    text: |
+      ParquetScope 的规则 ID 规范：
+      `PS0xx` 文件布局 · `PS1xx` Schema 结构 · `PS2xx` 编码与压缩 · `PS3xx` 统计与索引 · `PS4xx` 列特征
+
+  - type: input
+    id: name
+    attributes:
+      label: 规则名称
+      placeholder: "row group 行数波动过大"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: 规则类别
+      options:
+        - PS0xx - 文件布局
+        - PS1xx - Schema 结构
+        - PS2xx - 编码与压缩
+        - PS3xx - 统计与索引
+        - PS4xx - 列特征
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 建议严重级别
+      options:
+        - info（提示，扣 1 分）
+        - warn（警告，扣 6 分）
+        - error（错误，扣 15 分）
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 为什么需要这条规则
+      description: 它会导致什么性能或成本问题？请给出可量化的影响。
+    validations:
+      required: true
+
+  - type: textarea
+    id: detect
+    attributes:
+      label: 判定逻辑
+      description: 仅用 footer 元数据如何判定？涉及哪些字段？建议阈值是多少？
+    validations:
+      required: true
+
+  - type: textarea
+    id: advice
+    attributes:
+      label: 修复建议文案
+      description: 命中后给用户展示的整改建议
+    validations:
+      required: true

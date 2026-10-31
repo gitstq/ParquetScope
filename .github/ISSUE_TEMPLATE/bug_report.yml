@@ -1,0 +1,65 @@
+name: 🐛 缺陷报告 / Bug Report
+description: ParquetScope 解析错误、崩溃或结果不正确
+title: "fix: "
+labels: ["bug"]
+body:
+  - type: markdown
+    text: |
+      感谢反馈！提交前请先确认：**不要上传包含敏感数据的 Parquet 文件**，
+      如必须提供样本，请先脱敏，或只粘贴 `parquetscope dump <file>` 的 JSON 输出。
+
+  - type: input
+    id: version
+    attributes:
+      label: ParquetScope 版本
+      description: 运行 `python -m parquetscope --version`
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: Python 版本
+      placeholder: "3.11.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: command
+    attributes:
+      label: 复现命令
+      description: 完整命令行
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+      description: 包含完整 traceback（如有）
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: writer
+    attributes:
+      label: 文件由什么写入
+      description: 例如 pyarrow 23.0.0 / Spark 3.5 / DuckDB 1.1 / parquet-mr 1.14
+      placeholder: "parquet-cpp-arrow version 23.0.0"
+
+  - type: textarea
+    id: meta
+    attributes:
+      label: 文件元信息
+      description: `parquetscope dump <file>` 的 JSON 输出（可选）
+      render: json
