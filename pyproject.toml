@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parquetscope"
+version = "1.0.0"
+description = "零依赖 · 离线优先的 Parquet 列式文件体检与存储布局审计引擎（Python 库 + CLI）"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "ParquetScope Contributors" }]
+keywords = [
+    "parquet",
+    "columnar",
+    "data-engineering",
+    "observability",
+    "audit",
+    "cli",
+    "zero-dependency",
+    "offline",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Database",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: System :: Archiving :: Compression",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "build>=0.10",
+]
+
+[project.urls]
+Homepage = "https://github.com/gitstq/ParquetScope"
+Repository = "https://github.com/gitstq/ParquetScope"
+Issues = "https://github.com/gitstq/ParquetScope/issues"
+
+[project.scripts]
+parquetscope = "parquetscope.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"
